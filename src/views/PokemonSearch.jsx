@@ -26,11 +26,11 @@ export default function PokemonSearch() {
 
   return (
     <div className="container">
-      <h1>Busca tu Pokémon</h1>
+      <h1>Pokémon list</h1>
       <select onChange={ (e) => setPkmId(e.target.value) }>
         <List pkmNames={ pkmNames }/>
       </select>
-      <button onClick={ goLink }>buscar</button>
+      <button onClick={ goLink }>Search</button>
     </div>
   )
 }
