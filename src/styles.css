@@ -27,6 +27,12 @@
   width: 100%;
   max-width: 2rem;
   display: inline-block;
+  transition: transform .25s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.25);
+  transition: transform .25s ease-in-out;
 }
 
 .link {
@@ -97,4 +103,29 @@
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.loading {
+  margin-top: 8em;
+}
+
+.pokeball-load {
+  width: 100%;
+  max-width: 3.5rem;
+  margin: 0.2em auto 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pokeball-load {
+    animation: pkball-spin infinite 2s linear;
+  }
+}
+
+@keyframes pkball-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

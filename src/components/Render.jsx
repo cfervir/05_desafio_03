@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import Images from '../images'
 
 export default function Render( {pkmData} ) {
 
@@ -6,8 +7,9 @@ export default function Render( {pkmData} ) {
 
   if (pkmData.sprites === undefined) {
     return (
-      <div>
+      <div className="loading">
           <p>It's loading...</p>
+          <img src={Images.pokeball} alt="Pokeball" className="pokeball-load" />
       </div>
     );
   }
