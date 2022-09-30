@@ -29,7 +29,11 @@ export default function Render( {pkmData} ) {
       </div>
       <div className="pkm--images">
         <img src={ pkmData.sprites.other.home.front_default } alt={ pkmData.name } className="pkm--img" />
-        <img src={ pkmData.sprites.other.home.front_shiny } alt={ `Shiny ${pkmData.name}` } title="Shiny Variant" className="pkm--img pkm--shiny" />
+        <img src={ pkmData.sprites.other.home.front_shiny }
+          alt={ `Shiny ${pkmData.name.charAt(0).toUpperCase()}${pkmData.name.slice(1).toLowerCase()}` }
+          title={ `Shiny ${pkmData.name.charAt(0).toUpperCase()}${pkmData.name.slice(1).toLowerCase()}` }
+          className="pkm--img pkm--shiny"
+        />
       </div>
       <div>
         <p>HP: { pkmData.stats[0].base_stat }</p>
