@@ -3,16 +3,26 @@ import Images from '../images';
 
 export default function Render( {pkmData} ) {
 
+  const sumStats = (pkmData) => {
+    let data = pkmData.stats.map((s) => ({
+      stat: s.base_stat 
+    }));
+    let sum = data.reduce((a, b) => 
+      a + b.stat, 0
+    );
+    return sum;
+  };
+
   const navigate = useNavigate();
 
-  if (pkmData.sprites === undefined) {
+  if (pkmData.sprites === undefined ) {
     return (
       <div className="loading">
           <p>It's loading...</p>
           <img src={Images.pokeball} alt="Pokeball" className="pokeball-load" />
       </div>
     );
-  }
+  };
 
   return (
     <div>
@@ -35,13 +45,70 @@ export default function Render( {pkmData} ) {
           className="pkm--img pkm--shiny"
         />
       </div>
-      <div>
-        <p>HP: { pkmData.stats[0].base_stat }</p>
-        <p>Attack: { pkmData.stats[1].base_stat }</p>
-        <p>Defense: { pkmData.stats[2].base_stat }</p>
-        <p>Sp. Atk: { pkmData.stats[3].base_stat }</p>
-        <p>Sp. Def: { pkmData.stats[4].base_stat }</p>
-        <p>Speed: { pkmData.stats[5].base_stat }</p>
+      <div className="pkm__stats">
+        <div className="container--flex pkm__stats--sort">
+          <div className="pkm__stats--text">
+            <p><span className="pkm__stats--name">HP:</span> <strong>{ pkmData.stats[0].base_stat }</strong></p>
+          </div>
+          <div className="pkm__stat pkm__stat--hp">
+            <div className="pkm__stat--inside" style={ {width: `${(100 * parseInt(pkmData.stats[0].base_stat)/255)}%`,
+              backgroundColor: "#50ff64"} }>
+            </div>
+          </div>
+        </div>
+        <div className="container--flex pkm__stats--sort">
+          <div className="pkm__stats--text">
+            <p><span className="pkm__stats--name">Attack:</span> <strong>{ pkmData.stats[1].base_stat }</strong></p>
+          </div>
+          <div className="pkm__stat pkm__stat--atk">
+            <div className="pkm__stat--inside" style={ {width: `${(100 * parseInt(pkmData.stats[1].base_stat)/255)}%`,
+              backgroundColor: "#fff532"} }>
+            </div>
+          </div>
+        </div>
+        <div className="container--flex pkm__stats--sort">
+          <div className="pkm__stats--text">
+            <p><span className="pkm__stats--name">Defense:</span> <strong>{ pkmData.stats[2].base_stat }</strong></p>
+          </div>
+          <div className="pkm__stat pkm__stat--def">
+            <div className="pkm__stat--inside" style={ {width: `${(100 * parseInt(pkmData.stats[2].base_stat)/255)}%`,
+              backgroundColor: "#ff9632"} }>
+            </div>
+          </div>
+        </div>
+        <div className="container--flex pkm__stats--sort">
+          <div className="pkm__stats--text">
+            <p><span className="pkm__stats--name">Sp. Attack:</span> <strong>{ pkmData.stats[3].base_stat }</strong></p>
+          </div>
+          <div className="pkm__stat pkm__stat--sp-atk">
+            <div className="pkm__stat--inside" style={ {width: `${(100 * parseInt(pkmData.stats[3].base_stat)/255)}%`,
+              backgroundColor: "#64faff"} }>
+            </div>
+          </div>
+        </div>
+        <div className="container--flex pkm__stats--sort">
+          <div className="pkm__stats--text">
+            <p><span className="pkm__stats--name">So. Def:</span> <strong>{ pkmData.stats[4].base_stat }</strong></p>
+          </div>
+          <div className="pkm__stat pkm__stat--sp-def">
+            <div className="pkm__stat--inside" style={ {width: `${(100 * parseInt(pkmData.stats[4].base_stat)/255)}%`,
+              backgroundColor: "#5096ff"} }>
+            </div>
+          </div>
+        </div>
+        <div className="container--flex pkm__stats--sort">
+          <div className="pkm__stats--text">
+            <p><span className="pkm__stats--name">Speed:</span> <strong>{ pkmData.stats[5].base_stat }</strong></p>
+          </div>
+          <div className="pkm__stat pkm__stat--spd">
+            <div className="pkm__stat--inside" style={ {width: `${(100 * parseInt(pkmData.stats[5].base_stat)/255)}%`,
+              backgroundColor: "#d778ff"} }>
+            </div>
+          </div>
+        </div>
+        <div className="">
+            <p><span className="pkm__stats--name">Total Stats:</span> <strong>{ sumStats(pkmData) }</strong></p>
+          </div>
       </div>
       { pkmData.abilities.map((p, i) => (
           <p className="capitalize" key={i}> {p.ability.name } {p.is_hidden ? 'Hidden' : 'Normal'} </p>

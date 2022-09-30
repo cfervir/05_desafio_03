@@ -159,12 +159,14 @@
   position: absolute;
   font-weight: 700;
   font-size: 1.125rem;
-  border-radius: 50%;
-  padding: 0.25em;
+  line-height: 2.375rem;
+  height: 2.375rem;
+  width: 2.375rem;
   top: 0.5em;
   right: 0.5em;
   z-index: 2;
   opacity: 0;
+  border-radius: 50%;
   transition: all .25s ease-in-out;
   background-color: rgba(255, 235, 60, 0.85);
   background-image: linear-gradient(
@@ -212,6 +214,90 @@
 
 .pkm--img:last-child:hover {
   opacity: 1;
+}
+
+.pkm__stats {
+  margin: 0.5em auto;
+  width: 100%;
+  max-width: 20rem;
+}
+
+.pkm__stats--sort {
+  flex-direction: column;
+  margin-bottom: 0.5em;
+  position: relative
+}
+
+.pkm__stats--text {
+  margin-bottom: 0.2em;
+  line-height: 1;
+  position: relative;
+  top: 1px;
+}
+
+.pkm__stats--name {
+  font-size: 0.75rem;
+  line-height: 1;
+  position: relative;
+  bottom: 2px;
+}
+
+.pkm__stat {
+  height: 1.375rem;
+  width: 100%;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.pkm__stat--inside {
+  height: 1.375rem;
+}
+
+.pkm__stat--hp,
+.pkm__stat--atk,
+.pkm__stat--def,
+.pkm__stat--sp-atk,
+.pkm__stat--sp-def,
+.pkm__stat--spd {
+  border: 1px solid rgba(50, 50, 50, 0.2);
+}
+
+.pkm__stat--hp {
+  background-color: #d9ffdd;
+}
+
+.pkm__stat--atk {
+  background-color: #fffddb;
+}
+
+.pkm__stat--def {
+  background-color: #fff8f1;
+}
+
+.pkm__stat--sp-atk {
+  background-color: #e1feff;
+}
+
+.pkm__stat--sp-def {
+  background-color: #ebf3ff;
+}
+
+.pkm__stat--spd {
+  background-color: #fbf1ff;
+}
+
+
+
+@media (min-width: 320px) {
+  .pkm__stats--sort {
+    flex-direction: row;
+  }
+
+  .pkm__stats--text {
+    width: 42%;
+    text-align: right;
+    margin: 0 0.5em 0 0;
+  }
 }
 
 .capitalize {
