@@ -7,7 +7,7 @@ export default function PokemonSearch() {
   const [pkmNames, setPkmNames] = useState({});
   const pkmLink = useNavigate();
 
-  const endPoint = 'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0';
+  const endPoint = 'https://pokeapi.co/api/v2/pokemon?limit=898&offset=0';
 
   const getPkmNames = async() => {
     const res = await fetch(endPoint);

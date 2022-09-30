@@ -216,6 +216,10 @@
   opacity: 1;
 }
 
+.pkm__title {
+  margin-bottom: 0.2em;
+}
+
 .pkm__stats {
   margin: 0.5em auto;
   width: 100%;
@@ -286,7 +290,27 @@
   background-color: #fbf1ff;
 }
 
+.pkm__abilities {
+  margin: 0 auto 0.5em;
+  width: 100%;
+}
 
+.pkm__abilities--hidden::after {
+  content: 'Hidden';
+    font-family: monospace;
+    text-transform: uppercase;
+    position: relative;
+    font-weight: 700;
+    letter-spacing: 1px;
+    top: -2px;
+    color: white;
+    padding: 0.1em 0.3em 0.2em 0.4em;
+    font-size: 0.6rem;
+    border-radius: 0.625em;
+    text-shadow: 1px 1px #424242;
+    background-color: #e51c1c;
+    box-shadow: 1px 1px 0px #424242;
+}
 
 @media (min-width: 320px) {
   .pkm__stats--sort {

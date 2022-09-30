@@ -12,9 +12,9 @@ export default function List( {pkmNames} ) {
       { pkmInfo.map((pkm, i) => (
         <option 
           className="pkm__select--option"
-          value={ (pkm.url).replace('https://pokeapi.co/api/v2/pokemon/','') }
+          value={ pkm.url.replace('https://pokeapi.co/api/v2/pokemon/','') }
           key={i} >
-            {pkm.name.charAt(0).toUpperCase() + pkm.name.slice(1).toLowerCase()}
+            { `${pkm.name.charAt(0).toUpperCase()}${pkm.name.slice(1).toLowerCase()}` }
         </option>
       ))}
     </>

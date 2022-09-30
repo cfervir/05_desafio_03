@@ -46,6 +46,7 @@ export default function Render( {pkmData} ) {
         />
       </div>
       <div className="pkm__stats">
+        <h3 className="pkm__title">Stats</h3>
         <div className="container--flex pkm__stats--sort">
           <div className="pkm__stats--text">
             <p><span className="pkm__stats--name">HP:</span> <strong>{ pkmData.stats[0].base_stat }</strong></p>
@@ -106,14 +107,17 @@ export default function Render( {pkmData} ) {
             </div>
           </div>
         </div>
-        <div className="">
+        <div>
             <p><span className="pkm__stats--name">Total Stats:</span> <strong>{ sumStats(pkmData) }</strong></p>
           </div>
       </div>
-      { pkmData.abilities.map((p, i) => (
-          <p className="capitalize" key={i}> {p.ability.name } {p.is_hidden ? 'Hidden' : 'Normal'} </p>
-        ))
-      }
+      <div className="pkm__abilities">
+        <h3 className="pkm__title">Abilities</h3>
+        { pkmData.abilities.map((p, i) => (
+            <p className={p.is_hidden ? 'capitalize pkm__abilities--hidden' : 'capitalize'} key={i}> {p.ability.name } </p>
+          ))
+        }
+      </div>
       <button className="btn btn--back" onClick={() => navigate("/pokemon")}>Back!</button>
     </div>
   )
