@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav className="nav">
       <div className="container container--nav container--flex">
         <div>
-          <img src={ Images.pokeball } alt="Pokémon" className="logo" />
+          <img src={ Images.pokeball } alt="Pokémon" className="small-logo" />
         </div>
         <div>
           <NavLink end className={ setActiveClass } to="/">

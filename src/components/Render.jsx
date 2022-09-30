@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Images from '../images'
+import Images from '../images';
 
 export default function Render( {pkmData} ) {
 
@@ -17,13 +17,19 @@ export default function Render( {pkmData} ) {
   return (
     <div>
       <h2 className="capitalize">{pkmData.name}</h2>
-      <p> { pkmData.types.map((t, i) => (
-          <span className="capitalize" key={i}> {t.type.name } </span>
-        ))
-      } </p>
+      <div className="container--flex container--types">
+        { pkmData.types.map((t, i) => (
+          <img
+            src={ Images[t.type.name] }
+            alt={ t.type.name.charAt(0).toUpperCase() + t.type.name.slice(1).toLowerCase() }
+            title={ t.type.name.charAt(0).toUpperCase() + t.type.name.slice(1).toLowerCase() }
+            className="pkm--type" key={i}
+          />
+        ))}
+      </div>
       <div className="pkm--images">
         <img src={ pkmData.sprites.other.home.front_default } alt={ pkmData.name } className="pkm--img" />
-        <img src={ pkmData.sprites.other.home.front_shiny } alt={ `Shiny ${pkmData.name}` } className="pkm--img" />
+        <img src={ pkmData.sprites.other.home.front_shiny } alt={ `Shiny ${pkmData.name}` } title="Shiny Variant" className="pkm--img pkm--shiny" />
       </div>
       <div>
         <p>HP: { pkmData.stats[0].base_stat }</p>
@@ -37,7 +43,7 @@ export default function Render( {pkmData} ) {
           <p className="capitalize" key={i}> {p.ability.name } {p.is_hidden ? 'Hidden' : 'Normal'} </p>
         ))
       }
-      <button onClick={() => navigate("/pokemon")}>Back!</button>
+      <button className="btn btn--back" onClick={() => navigate("/pokemon")}>Back!</button>
     </div>
   )
 }

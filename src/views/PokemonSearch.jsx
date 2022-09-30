@@ -26,11 +26,13 @@ export default function PokemonSearch() {
 
   return (
     <div className="container">
-      <h1>Pokémon list</h1>
-      <select onChange={ (e) => setPkmId(e.target.value) }>
-        <List pkmNames={ pkmNames }/>
-      </select>
-      <button onClick={ goLink }>Search</button>
+      <h1>Here's the list</h1>
+      <div className="container--flex pkm--list">
+        <select className="pkm__select" onChange={ ({ target }) => setPkmId(target.value) }>
+          <List pkmNames={ pkmNames }/>
+        </select>
+        <button className="btn btn--send" onClick={ goLink }>Search</button>
+      </div>
     </div>
   )
 }
