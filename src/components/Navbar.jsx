@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import Images from "../images";
 
 export default function Navbar() {
-  const setActiveClass = ({ isActive }) => (isActive ? "link link--decor active" : "link link--decor");
+  const setActiveClass = ({ isActive }) => (isActive ? 'active' : '');
   return (
     <nav className="nav">
       <div className="container container--nav container--flex">
@@ -10,10 +10,10 @@ export default function Navbar() {
           <img src={ Images.pokeball } alt="Pokémon" className="small-logo" />
         </div>
         <div>
-          <NavLink end className={ setActiveClass } to="/">
+          <NavLink end className={`link link--decor ${setActiveClass}`} to="/">
             Home
           </NavLink>
-          <NavLink className={ setActiveClass } to="/pokemon">
+          <NavLink className={`link link--decor ${setActiveClass}`} to="/pokemon">
             Pokémon
           </NavLink>
         </div>

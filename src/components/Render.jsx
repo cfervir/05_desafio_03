@@ -4,11 +4,8 @@ import Images from '../images';
 export default function Render( {pkmData} ) {
 
   const sumStats = (pkmData) => {
-    let data = pkmData.stats.map((s) => ({
-      stat: s.base_stat 
-    }));
-    let sum = data.reduce((a, b) => 
-      a + b.stat, 0
+    const sum = pkmData.stats.reduce((a, b) => 
+      a + b.base_stat, 0
     );
     return sum;
   };
@@ -102,7 +99,7 @@ export default function Render( {pkmData} ) {
             <p><span className="pkm__stats--name">Speed:</span> <strong>{ pkmData.stats[5].base_stat }</strong></p>
           </div>
           <div className="pkm__stat pkm__stat--spd">
-            <div className="pkm__stat--inside" style={ {width: `${(100 * parseInt(pkmData.stats[5].base_stat)/255)}%`,
+            <div className="pkm__stat--inside" style={ {width: `${(100 * pkmData.stats[5].base_stat/255)}%`,
               backgroundColor: "#d778ff"} }>
             </div>
           </div>
@@ -114,7 +111,7 @@ export default function Render( {pkmData} ) {
       <div className="pkm__abilities">
         <h3 className="pkm__title">Abilities</h3>
         { pkmData.abilities.map((p, i) => (
-            <p className={p.is_hidden ? 'capitalize pkm__abilities--hidden' : 'capitalize'} key={i}> {p.ability.name } </p>
+            <p className={`capitalize ${p.is_hidden ? 'pkm__abilities--hidden' : ''}`} key={i}> {p.ability.name } </p>
           ))
         }
       </div>
